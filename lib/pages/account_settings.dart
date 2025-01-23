@@ -8,6 +8,7 @@ import 'package:news_app/enum/account_change_type.dart';
 
 import 'package:news_app/main.dart';
 import 'package:news_app/models/user_model.dart' as user_model;
+import 'package:news_app/pages/change_password.dart';
 
 import 'package:news_app/utils/database_collection.dart';
 import 'package:news_app/widget/button.dart';
@@ -51,8 +52,11 @@ class _AccountSettingsState extends State<AccountSettings> {
                     ListTile(
                       title: const Text("Change Password"),
                       onTap: () {
-                        accountChangeType = AccountChangeType.password;
-                        setState(() {});
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChangePasswordPage(),
+                            ));
                       },
                     ),
                   ],

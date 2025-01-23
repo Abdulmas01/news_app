@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:news_app/models/article_model.dart';
 import 'package:news_app/models/preferences.dart';
@@ -55,9 +56,11 @@ class StorageApi {
     box.write(articlesKey, all);
   }
 
-  static void logout() {
+  static void logout() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
     box.write(user, null);
     box.write(emailkey, null);
+    await auth.signOut();
     setLoggedin(false);
   }
 }
