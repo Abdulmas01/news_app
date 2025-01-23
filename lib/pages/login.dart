@@ -3,9 +3,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:news_app/api/navigation_api.dart';
 import 'package:news_app/api/snackbar_api.dart';
 import 'package:news_app/api/storage_api.dart';
 import 'package:news_app/models/user_model.dart' as user_model;
+import 'package:news_app/pages/forgot_password_page.dart';
 import 'package:news_app/pages/main_pages.dart';
 import 'package:news_app/style/text_style.dart';
 import 'package:news_app/widget/button.dart';
@@ -114,6 +116,17 @@ class _LoginState extends State<Login> {
                           hintText: "password",
                           icon: const Icon(Icons.lock_outlined),
                           onsave: (value) => password = value),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            NavigationApi.nextpage(
+                                route: const ForgotPasswordPage(),
+                                context: context);
+                          },
+                          child: const Text("Forgot Password"),
+                        ),
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
