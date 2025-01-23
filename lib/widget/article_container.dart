@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:news_app/api/navigation_api.dart';
@@ -37,16 +38,11 @@ class ArticleContainer extends StatelessWidget {
                     alignment: Alignment.center,
                     child: const Text("Article has no image"),
                   )
-                : Image.network(
-                    article.imageUrl!,
+                : CachedNetworkImage(
+                    imageUrl: article.imageUrl!,
                     height: 200,
                     fit: BoxFit.cover,
                     alignment: Alignment.center,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Center(
-                        child: Text("Fail to load image"),
-                      );
-                    },
                   ),
             const SizedBox(
               height: 20,
@@ -57,6 +53,8 @@ class ArticleContainer extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     article.saveLocally();
+                    SnackbarApi(duration: const Duration(seconds: 3)).snackbar(
+                        text: "Article Saved Succesfully", context: context);
                   },
                   child: Container(
                     decoration: const BoxDecoration(),
