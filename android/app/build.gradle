@@ -29,11 +29,11 @@ apply plugin: 'com.google.gms.google-services'
 android {
     namespace "com.example.news_app"
     compileSdkVersion 34
-    ndkVersion flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     kotlinOptions {

@@ -44,7 +44,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Forgot Password")),
+      appBar: AppBar(title: const Text("Forgot Password")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -55,7 +55,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               TextFormField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(labelText: "Enter your email"),
+                decoration:
+                    const InputDecoration(labelText: "Enter your email"),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your email";
@@ -66,12 +67,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               _isLoading
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : ElevatedButton(
                       onPressed: _resetPassword,
-                      child: Text("Send Reset Email"),
+                      child: const Text("Send Reset Email"),
                     ),
             ],
           ),
